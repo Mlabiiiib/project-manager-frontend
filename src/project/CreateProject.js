@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-function ProjectForm({ mode, project }) {
+function CreateProject({ project }) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [client, setClient] = useState('');
@@ -15,6 +16,8 @@ function ProjectForm({ mode, project }) {
             setDeadline(project.deadline);
             setStatus(project.status);
         }
+
+
     }, [project]);
 
     const handleSubmit = event => {
@@ -22,12 +25,8 @@ function ProjectForm({ mode, project }) {
 
         const data = { name, description, client, deadline, status };
 
-        const method = mode === 'create' ? 'POST' : 'PUT';
-
-        const url = mode === 'create' ? 'http://localhost:8080/api/projects' : `http://localhost:8080/api/projects/${project.id}`;
-
-        fetch(url, {
-            method,
+        fetch('http://localhost:8080/api/projects', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -41,7 +40,7 @@ function ProjectForm({ mode, project }) {
 
     return (
         <div>
-            <h1>{mode === 'create' ? 'Create Project' : 'Update Project'}</h1>
+            <h1>Create Project</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Name:</label>
@@ -85,16 +84,17 @@ function ProjectForm({ mode, project }) {
                         value={status}
                         onChange={event => setStatus(event.target.value)}
                     >
-                        <option value="active">Active</option>
-                        <option value="completed">Completed</option>
-                        <option value="cancelled">Cancelled</option>
+                        <option value="" selected disabled hidden>Choose here</option>
+                        <option value="TODO">TODO</option>
+                        <option value="DOING">DOING</option>
+                        <option value="DONE">DONE</option>
                     </select>
                 </div>
-                <button type="submit">{mode === 'create' ? 'Create' : 'Update'}</button>
+                <button type="submit">Create</button>
             </form>
         </div>
     );
 }
 
-export default ProjectForm;
+export default CreateProject;
 

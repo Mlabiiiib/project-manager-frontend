@@ -1,3 +1,4 @@
+import { Grid, Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 
 function ProjectList() {
@@ -9,17 +10,61 @@ function ProjectList() {
       .then(data => setProjects(data));
   }, []);
 
+  const todoProjects = projects.filter(project => project.status == "TODO");
+  const doingProjects = projects.filter(project => project.status == "DOING");
+  const doneProjects = projects.filter(project => project.status == "DONE");
+
+
   return (
-    <div>
-      <h1>Project List</h1>
-      {projects.map(project => (
-        <div key={project.id} >
-          <h3>{project.name}</h3>
-          <p>{project.status}</p>
-          <a href={"/projects/"+ project.id}>Check details</a>
-        </div>
-      ))}
-    </div>
+    <Grid container spacing={1}>
+      <Grid item xs={4} spacing={1}>
+        <p>TODO</p>
+        {todoProjects.map(project => (
+          <Card key={project.id} sx={{ minWidth: 275, m: 100 }}>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                {project.name}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small" href={"/projects/" + project.id}>Check details</Button>
+            </CardActions>
+          </Card>
+        ))}
+      </Grid>
+      <Grid item xs={4} style={{ gap: 15 }}>
+        <p>DOING</p>
+        {doingProjects.map(project => (
+          <Card key={project.id} sx={{ minWidth: 275,p: 100 }}>
+                        <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                {project.name}
+              </Typography>
+
+            </CardContent>
+            <CardActions>
+              <Button size="small" href={"/projects/" + project.id}>Check details</Button>
+            </CardActions>
+          </Card>
+        ))}
+      </Grid>
+      <Grid item xs={4} rowSpacing={6}>
+        <p>DONE</p>
+        {doneProjects.map(project => (
+          <Card key={project.id} sx={{ minWidth: 275, p: 100, m: 100 }}>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                {project.name}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small" href={"/projects/" + project.id}>Check details</Button>
+            </CardActions>
+          </Card>
+        ))}
+      </Grid>
+    </Grid >
+
   );
 }
 

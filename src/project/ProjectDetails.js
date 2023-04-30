@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import EditProject from './EditProject.js';
 
 function ProjectDetails() {
   const { id } = useParams();
@@ -23,6 +24,7 @@ function ProjectDetails() {
       <p>Client: {project.client}</p>
       <p>Deadline: {project.deadline}</p>
       <p>Status: {project.status}</p>
+      <EditProject project={project} />
     </div>
   );
 }
