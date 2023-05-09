@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
 function CreateProject({ project }) {
     const [name, setName] = useState('');
@@ -71,7 +70,7 @@ function CreateProject({ project }) {
                 <div>
                     <label htmlFor="deadline">Deadline:</label>
                     <input
-                        type="datetime-local"
+                        type="date"
                         id="deadline"
                         value={deadline}
                         onChange={event => setDeadline(event.target.value)}

@@ -76,7 +76,7 @@ function EditProject({ project }) {
                 <div>
                     <label htmlFor="deadline">Deadline:</label>
                     <input
-                        type="datetime-local"
+                        type="date"
                         id="deadline"
                         value={deadline}
                         onChange={event => setDeadline(event.target.value)}
