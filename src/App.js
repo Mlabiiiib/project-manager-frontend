@@ -3,24 +3,14 @@ import ProjectList from './project/ProjectList.js';
 import ProjectDetails from './project/ProjectDetails.js';
 import CreateProject from './project/CreateProject.js';
 import EditProject from './project/EditProject.js';
-import { AppBar, Box, Toolbar, Typography, Button } from '@material-ui/core';
+import Header from './project/Header.js';
+import Footer from './project/Footer.js';
 
 
 function App() {
   return (
     <Router>
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
-            <Toolbar>
-              <Link to="/">
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                  Home
-                </Typography>
-              </Link>
-              <Link to="/projects/new"><Button color="inherit">New project</Button></Link>
-            </Toolbar>
-          </AppBar>
-        </Box>
+        <Header/>
         <Routes>
           <Route path="/projects/new" element={<CreateProject />} />
           <Route path="/projects/:id/edit" element={<EditProject />} />
@@ -28,6 +18,7 @@ function App() {
           <Route path="/projects" element={<ProjectList />} />
           <Route path="/" element={<ProjectList />} />
         </Routes>
+        <Footer/>
     </Router>
   );
 }

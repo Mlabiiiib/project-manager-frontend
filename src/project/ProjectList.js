@@ -1,4 +1,4 @@
-import { Grid, Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
+import { Grid, Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 
 function ProjectList() {
@@ -17,7 +17,7 @@ function ProjectList() {
 
   return (
     <Grid container spacing={1}>
-      <Grid item xs={4} spacing={1}>
+      <Grid item xs={4}>
         <p>TODO</p>
         {todoProjects.map(project => (
           <Card key={project.id} sx={{ minWidth: 275, m: 100 }}>
@@ -32,7 +32,7 @@ function ProjectList() {
           </Card>
         ))}
       </Grid>
-      <Grid item xs={4} style={{ gap: 15 }}>
+      <Grid item xs={4}>
         <p>DOING</p>
         {doingProjects.map(project => (
           <Card key={project.id} sx={{ minWidth: 275,p: 100 }}>
@@ -48,7 +48,7 @@ function ProjectList() {
           </Card>
         ))}
       </Grid>
-      <Grid item xs={4} rowSpacing={6}>
+      <Grid item xs={4}>
         <p>DONE</p>
         {doneProjects.map(project => (
           <Card key={project.id} sx={{ minWidth: 275, p: 100, m: 100 }}>
