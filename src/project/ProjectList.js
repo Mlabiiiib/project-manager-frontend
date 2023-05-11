@@ -1,12 +1,16 @@
 import { Grid, Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import React from 'react';
+import ListIcon from '@mui/icons-material/List';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import DoneIcon from '@mui/icons-material/Done';
+
 
 const ProjectCard = ({ project }) => {
   return (
-    <Card key={project.id} sx={{my:3, mx:1}}>
+    <Card key={project.id} sx={{ my: 3, mx: 1 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 17 }} color="text.secondary" gutterBottom>
           {project.name}
         </Typography>
 
@@ -18,18 +22,6 @@ const ProjectCard = ({ project }) => {
   );
 }
 
-const ProjectsSection = ({ projects, title }) => {
-  return (
-    <Grid item xs={4}>
-      <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 18, color: "#1D267D" }} gutterBottom>
-        {title}
-      </Typography>
-      {projects.map(project => (
-        <ProjectCard project={project} />
-      ))}
-    </Grid>
-  );
-}
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
@@ -40,16 +32,37 @@ function ProjectList() {
       .then(data => setProjects(data));
   }, []);
 
-  const todoProjects = projects.filter(project => project.status == "TODO");
-  const doingProjects = projects.filter(project => project.status == "DOING");
-  const doneProjects = projects.filter(project => project.status == "DONE");
+  const todoProjects = projects.filter(project => project.status === "TODO");
+  const doingProjects = projects.filter(project => project.status === "DOING");
+  const doneProjects = projects.filter(project => project.status === "DONE");
 
 
   return (
-    <Grid container sx={{spacing:1, px:1}}>
-      <ProjectsSection projects={todoProjects} title='TODO' />
-      <ProjectsSection projects={doingProjects} title='DOING' />
-      <ProjectsSection projects={doneProjects} title='DONE' />
+    <Grid container sx={{ spacing: 1, px: 1 }}>
+      <Grid item xs={4}>
+        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 21, color: "#1D267D" }} gutterBottom>
+          <ListIcon /> TODO
+        </Typography>
+        {todoProjects.map(project => (
+          <ProjectCard project={project} />
+        ))}
+      </Grid>
+      <Grid item xs={4}>
+        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 21, color: "#1D267D" }} gutterBottom>
+          <AutorenewIcon /> DOING
+        </Typography>
+        {doingProjects.map(project => (
+          <ProjectCard project={project} />
+        ))}
+      </Grid>
+      <Grid item xs={4}>
+        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 21, color: "#1D267D" }} gutterBottom>
+          <DoneIcon /> DONE
+        </Typography>
+        {doneProjects.map(project => (
+          <ProjectCard project={project} />
+        ))}
+      </Grid>
     </Grid >
   );
 }

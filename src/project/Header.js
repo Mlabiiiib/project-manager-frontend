@@ -5,17 +5,17 @@ import React from 'react';
 function Header() {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                <AppBar>
-                    <Toolbar sx={{ justifyContent: "space-between", background: '#5C469C' }}>
-                        <Button href='/' color="inherit" variant="h6">
-                            <Home />Home
-                        </Button>
-                        <Button href='/projects/new' color="inherit">
-                            <Add />New project
-                        </Button>
-                    </Toolbar>
-                </AppBar>
-            <Card sx={{ m: '0 auto' }}>   
+            <AppBar>
+                <Toolbar sx={{ justifyContent: "space-between", background: '#5C469C' }}>
+                    <Button href='/' color="inherit" variant="h6">
+                        <Home />Home
+                    </Button>
+                    <Button href='/projects/new' color="inherit">
+                        <Add />New project
+                    </Button>
+                </Toolbar>
+            </AppBar>
+            <Card sx={{ mt:7, mx: 'auto' }}>
                 <CardMedia
                     component="img"
                     alt="Banner Image"

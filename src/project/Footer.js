@@ -18,7 +18,7 @@ export default function Footer() {
       }}
     >
           <Typography variant="body2" color="white">
-            {'Copyright © Labib' + new Date().getFullYear() + '.'}
+            {'Copyright © Labib ' + new Date().getFullYear() + '.'}
           </Typography>        
     </Box>
   );
