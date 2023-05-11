@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Typography, TextField, TextareaAutosize, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import React  from 'react';
+
 
 function CreateProject({ project }) {
     const [name, setName] = useState('');
@@ -39,59 +42,65 @@ function CreateProject({ project }) {
 
     return (
         <div>
-            <h1>Create Project</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        value={name}
-                        onChange={event => setName(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="description">Description:</label>
-                    <textarea
-                        id="description"
-                        value={description}
-                        onChange={event => setDescription(event.target.value)}
-                    ></textarea>
-                </div>
-                <div>
-                    <label htmlFor="client">Client:</label>
-                    <input
-                        type="text"
-                        id="client"
-                        value={client}
-                        onChange={event => setClient(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="deadline">Deadline:</label>
-                    <input
-                        type="date"
-                        id="deadline"
-                        value={deadline}
-                        onChange={event => setDeadline(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="status">Status:</label>
-                    <select
-                        id="status"
-                        value={status}
-                        onChange={event => setStatus(event.target.value)}
-                    >
-                        <option value="" selected disabled hidden>Choose here</option>
-                        <option value="TODO">TODO</option>
-                        <option value="DOING">DOING</option>
-                        <option value="DONE">DONE</option>
-                    </select>
-                </div>
-                <button type="submit">Create</button>
-            </form>
-        </div>
+        <Typography variant="h1">Create Project</Typography>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <Typography htmlFor="name">Name:</Typography>
+            <TextField
+              type="text"
+              id="name"
+              value={name}
+              onChange={event => setName(event.target.value)}
+            />
+          </div>
+          <div>
+            <Typography htmlFor="description">Description:</Typography>
+            <TextareaAutosize
+              id="description"
+              value={description}
+              onChange={event => setDescription(event.target.value)}
+            ></TextareaAutosize>
+          </div>
+          <div>
+            <Typography htmlFor="client">Client:</Typography>
+            <TextField
+              type="text"
+              id="client"
+              value={client}
+              onChange={event => setClient(event.target.value)}
+            />
+          </div>
+          <div>
+            <Typography htmlFor="deadline">Deadline:</Typography>
+            <TextField
+              type="date"
+              id="deadline"
+              value={deadline}
+              onChange={event => setDeadline(event.target.value)}
+            />
+          </div>
+          <div>
+            <Typography htmlFor="status">Status:</Typography>
+            <FormControl>
+              <InputLabel id="status-label">Status</InputLabel>
+              <Select
+                id="status"
+                value={status}
+                onChange={event => setStatus(event.target.value)}
+                labelId="status-label"
+              >
+                <MenuItem value="" disabled hidden>
+                  Choose here
+                </MenuItem>
+                <MenuItem value="TODO">TODO</MenuItem>
+                <MenuItem value="DOING">DOING</MenuItem>
+                <MenuItem value="DONE">DONE</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+          <Button type="submit">Create</Button>
+        </form>
+      </div>
     );
 }
 

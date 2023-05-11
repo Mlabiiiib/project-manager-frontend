@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Typography } from '@mui/material';
 import EditProject from './EditProject.js';
+import React  from 'react';
+
 
 function ProjectDetails() {
   const { id } = useParams();
@@ -19,11 +22,11 @@ function ProjectDetails() {
 
   return (
     <div>
-      <h1>{project.name}</h1>
-      <p>{project.description}</p>
-      <p>Client: {project.client}</p>
-      <p>Deadline: {project.deadline}</p>
-      <p>Status: {project.status}</p>
+      <Typography variant="h1">{project.name}</Typography>
+      <Typography variant="body1">{project.description}</Typography>
+      <Typography variant="body1">Client: {project.client}</Typography>
+      <Typography variant="body1">Deadline: {project.deadline}</Typography>
+      <Typography variant="body1">Status: {project.status}</Typography>
       <EditProject project={project} />
     </div>
   );
