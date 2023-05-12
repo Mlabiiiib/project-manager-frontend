@@ -8,7 +8,7 @@ import DoneIcon from '@mui/icons-material/Done';
 
 const ProjectCard = ({ project }) => {
   return (
-    <Card key={project.id} sx={{ my: 3, mx: 1 }}>
+    <Card key={project.id} sx={{ my: 3, mx: 1, boxShadow: 3 }}>
       <CardContent>
         <Typography sx={{ fontSize: 17 }} color="text.secondary" gutterBottom>
           {project.name}
@@ -40,7 +40,7 @@ function ProjectList() {
   return (
     <Grid container sx={{ spacing: 1, px: 1 }}>
       <Grid item xs={4}>
-        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 21, color: "#1D267D" }} gutterBottom>
+        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 26, color: "#1D267D" }} gutterBottom>
           <ListIcon /> TODO
         </Typography>
         {todoProjects.map(project => (
@@ -48,7 +48,7 @@ function ProjectList() {
         ))}
       </Grid>
       <Grid item xs={4}>
-        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 21, color: "#1D267D" }} gutterBottom>
+        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 26, color: "#1D267D" }} gutterBottom>
           <AutorenewIcon /> DOING
         </Typography>
         {doingProjects.map(project => (
@@ -56,7 +56,7 @@ function ProjectList() {
         ))}
       </Grid>
       <Grid item xs={4}>
-        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 21, color: "#1D267D" }} gutterBottom>
+        <Typography sx={{ p: 1, m: 1, fontWeight: 'bold', fontSize: 26, color: "#1D267D" }} gutterBottom>
           <DoneIcon /> DONE
         </Typography>
         {doneProjects.map(project => (

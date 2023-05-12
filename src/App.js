@@ -14,7 +14,7 @@ function App() {
     <Router>
         <Header/>
         <Routes>
-          <Route path="/projects/new" element={<CreateProject />} />
+          <Route path="/projects/create" element={<CreateProject />} />
           <Route path="/projects/:id/edit" element={<EditProject />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/projects" element={<ProjectList />} />

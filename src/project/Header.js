@@ -10,7 +10,7 @@ function Header() {
                     <Button href='/' color="inherit" variant="h6">
                         <Home />Home
                     </Button>
-                    <Button href='/projects/new' color="inherit">
+                    <Button href='/projects/create' color="inherit">
                         <Add />New project
                     </Button>
                 </Toolbar>
