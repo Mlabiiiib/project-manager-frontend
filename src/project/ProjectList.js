@@ -44,7 +44,7 @@ function ProjectList() {
           <ListIcon /> TODO
         </Typography>
         {todoProjects.map(project => (
-          <ProjectCard project={project} />
+          <ProjectCard key={project.id} project={project} />
         ))}
       </Grid>
       <Grid item xs={4}>
@@ -52,7 +52,7 @@ function ProjectList() {
           <AutorenewIcon /> DOING
         </Typography>
         {doingProjects.map(project => (
-          <ProjectCard project={project} />
+          <ProjectCard key={project.id} project={project} />
         ))}
       </Grid>
       <Grid item xs={4}>
@@ -60,7 +60,7 @@ function ProjectList() {
           <DoneIcon /> DONE
         </Typography>
         {doneProjects.map(project => (
-          <ProjectCard project={project} />
+          <ProjectCard key={project.id} project={project} />
         ))}
       </Grid>
     </Grid >
