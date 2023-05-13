@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Project Manager
+This application help user manage their projects.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+The project offers the following features:
+- View all projects by their status
+- View project by id
+- Create project
+- Update project
+- Delete project
 
-## Available Scripts
+## Used technologies
+- Git
+- JDK 17
+- Maven 3
+- Spring Boot
+- Spring: Web, JPA
+- Lombok
+- Docker
 
-In the project directory, you can run:
+## Run project locally
+### Prerequisites
+In order to run the project in your local machine, you need the following prerequisites:
+- JDK 17
+- Maven 3
+- Docker Desktop
+- npm
+- Node
+- ports 3000 and 8080 available (in case they are used, update front and backend projects with available ports)
 
-### `npm start`
+### Run the project locally
+#### Clone the projects
+- create a folder (project-manger for example)
+- navigate to this folder
+- open cmd line and clone project-manager-docker, project-manager-backend and project-manager-frontend
+```
+git clone https://github.com/Mlabiiiib/project-manager-docker.git
+```
+```
+git clone https://github.com/Mlabiiiib/project-manager-backend.git
+```
+```
+git clone https://github.com/Mlabiiiib/project-manager-frontend.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Docker
+- Run docker desktop
+- navigate to the project 'project-manager-docker'
+- open cmd line and run
+```
+docker-compose up
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Backend
+- navigate to the project 'project-manager-backend'
+- open cmd line and run
+```
+mvn clean install
+```
 
-### `npm test`
+```
+mvn spring-boot:run
+```
+#### Frontend
+- navigate to the project 'project-manager-frontend'
+- open cmd line and run
+```
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm start
+```

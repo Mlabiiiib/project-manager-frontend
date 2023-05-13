@@ -43,7 +43,6 @@ function ProjectDetails() {
       }, 3000)
     )
 
-//    .then(res => {res.json(); setShowDeleted(true);})
       .then(data => console.log(data))
       .catch(err => console.error(err));
   };
