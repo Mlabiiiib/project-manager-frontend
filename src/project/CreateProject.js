@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Grid, Typography, TextField, TextareaAutosize, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import {Alert, AlertTitle, Grid, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import React from 'react';
 import { Add } from '@mui/icons-material';
 
@@ -10,6 +10,8 @@ function CreateProject({ project }) {
   const [client, setClient] = useState('');
   const [deadline, setDeadline] = useState('');
   const [status, setStatus] = useState('');
+  const [showCreated, setShowCreated] = useState(false);
+
 
   useEffect(() => {
     if (project) {
@@ -35,7 +37,7 @@ function CreateProject({ project }) {
       },
       body: JSON.stringify(data)
     })
-      .then(res => res.json())
+      .then(res => {res.json();setShowCreated(true);})
       .then(data => console.log(data))
       .catch(err => console.error(err));
 
@@ -43,6 +45,14 @@ function CreateProject({ project }) {
 
   return (
     <Grid container xs={8} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', mx: 'auto', py: 1 }}>
+              <Grid sx={{ py: 1, display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+        {showCreated && (
+          <Alert sx={{ flexGrow: 1 }} severity="success">
+            <AlertTitle>Created</AlertTitle>
+            Project {name} created successfully.
+          </Alert>
+        )}
+      </Grid>
         <Typography sx={{ fontWeight: 'bold', fontSize: 26, color: "#1D267D" }} gutterBottom>
           <Add/> Create Project
         </Typography>

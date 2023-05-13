@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Grid, Typography, TextField, TextareaAutosize, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Alert, AlertTitle, Grid, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import React from 'react';
 import { Edit } from '@mui/icons-material';
 
@@ -13,17 +13,19 @@ function EditProject() {
   const [client, setClient] = useState('');
   const [deadline, setDeadline] = useState('');
   const [status, setStatus] = useState('');
+  const [showUpdated, setShowUpdated] = useState(false);
+
 
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/projects/${id}`)
       .then(res => res.json())
       .then(data => {
-        setName(data.name); 
-        setDescription(data.description); 
-        setClient(data.client); 
-        setDeadline(data.deadline); 
-        setStatus(data.status); 
+        setName(data.name);
+        setDescription(data.description);
+        setClient(data.client);
+        setDeadline(data.deadline);
+        setStatus(data.status);
       })
       .catch(err => console.error(err));
   }, [id]);
@@ -35,9 +37,6 @@ function EditProject() {
     const data = { id, name, description, client, deadline, status };
     const url = `http://localhost:8080/api/projects/${id}`;
 
-    console.log(name);
-    console.log(id);
-
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -45,7 +44,7 @@ function EditProject() {
       },
       body: JSON.stringify(data)
     })
-      .then(res => res.json())
+      .then(res => { res.json(); setShowUpdated(true); })
       .then(data => console.log(data))
       .catch(err => console.error(err));
 
@@ -53,6 +52,14 @@ function EditProject() {
 
   return (
     <Grid container xs={8} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', mx: 'auto', py: 1 }}>
+      <Grid sx={{ py: 1, display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+        {showUpdated && (
+          <Alert sx={{ flexGrow: 1 }} severity="success">
+            <AlertTitle>Updated</AlertTitle>
+            Project {id} updated successfully.
+          </Alert>
+        )}
+      </Grid>
       <Typography sx={{ fontWeight: 'bold', fontSize: 26, color: "#1D267D" }} gutterBottom>
         <Edit /> Update project {id}
       </Typography>
@@ -119,7 +126,7 @@ function EditProject() {
           </FormControl>
         </Grid>
         <Grid sx={{ py: 1, display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-          <Button variant="contained" sx={{ flexGrow: 1, fontSize: 17}} type="submit"><Edit />Update</Button>
+          <Button variant="contained" sx={{ flexGrow: 1, fontSize: 17 }} type="submit"><Edit />Update</Button>
         </Grid>
       </form>
     </Grid>
